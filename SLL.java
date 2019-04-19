@@ -1,3 +1,5 @@
+package eg.edu.alexu.csd.datastructure.linkedList;
+
 public class LinkedList {
 	public Node head = null;
 	private int size = 0;
