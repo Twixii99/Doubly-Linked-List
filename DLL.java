@@ -1,4 +1,4 @@
-package let;
+package eg.edu.alexu.csd.datastructure.linkedList;
 
 public class DlinkedList {
 	private Dnode head = null;
