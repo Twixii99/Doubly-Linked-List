@@ -14,7 +14,7 @@ public class LinkedList {
     }
 	
     public void add(int index, Object element) {
-       if(index >= size) return;
+       if(index > size || index <0) return;
        if(index == 0){
            Node newnode = new Node(element);
            newnode.next = head;
