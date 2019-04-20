@@ -19,7 +19,7 @@ public class Main {
 		System.out.println("4- Subtract two polynomials");
 		System.out.println("5- Multiply two polynomials");
 		System.out.println("6- Evaluate a polynomial at some point");
-		System.out.println("7- Clear a polynomial variable);");
+		System.out.println("7- Clear a polynomial variable)");
 		for(;;) {
 			System.out.println("ensert the operation");
 		    	int choose = input.nextInt();
