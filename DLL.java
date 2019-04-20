@@ -15,7 +15,7 @@ public class DlinkedList {
      
    public void add(int index, Object element) {
         if(index > size || index < 0) return;
-        DNode newnode = new DNode(element);
+        Dnode newnode = new Dnode(element);
         if(head==null){
             head = newnode;
             size++;
@@ -29,7 +29,7 @@ public class DlinkedList {
         else if(index == size  ){
             this.add(element);
         }else{
-            DNode i = head;
+            Dnode i = head;
             int counter =0;
             while(counter < index-1){
                 i = i.next;
@@ -47,12 +47,12 @@ public class DlinkedList {
     
       @Override
     public void add(Object element) {
-         DNode newnode = new DNode(element);
+         Dnode newnode = new Dnode(element);
         if(head == null){
            head = newnode;
            size++;
         }else{
-            DNode i = head;
+            Dnode i = head;
             while(i.next != null) i = i.next;
             i.next = newnode;
             newnode.prev = i;
