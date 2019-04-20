@@ -117,14 +117,31 @@ public class LinkedList {
 		}
 		Node i = null;
 		int counter = 0;
-		while(counter < size-2) {
-			if(pointer.next.name == poly) i = pointer;
+		while(counter < size-1) {
+			if(pointer.next.name == poly){
+                            i = pointer;
+                            break;
+                        }
 			counter++;
 			pointer = pointer.next;
 		}
 		i.next = i.next.next;
-		size--;
-		
+		size--;	
+	}
+        
+        public void modify(char poly , Object element){
+            Node i = head;
+            while(i!= null){
+                if(i.name == poly) {
+                    i.data = element;
+                    break;
+                }
+                i=i.next;
+            }
+        }
+	
+	public int size() {
+		return size;
 	}
 	
 	public int size() {
