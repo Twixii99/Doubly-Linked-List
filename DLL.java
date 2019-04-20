@@ -13,16 +13,23 @@ public class DlinkedList {
         }
     }
      
-    public void add(int index, Object element) {
-        if(index >= size) return;
-        Dnode newnode = new Dnode(element);
-        if(index ==0){
+   public void add(int index, Object element) {
+        if(index > size || index < 0) return;
+        DNode newnode = new DNode(element);
+        if(head==null){
+            head = newnode;
+            size++;
+        }
+        else if(index == 0){
             newnode.next = head;
             head.prev = newnode;
             head = newnode;
             size++;
+        }
+        else if(index == size  ){
+            this.add(element);
         }else{
-            Dnode i = head;
+            DNode i = head;
             int counter =0;
             while(counter < index-1){
                 i = i.next;
@@ -35,28 +42,23 @@ public class DlinkedList {
             size++;
         }
     }
-
+    
+    
+    
+      @Override
     public void add(Object element) {
-        Dnode newnode = new Dnode(element);
+         DNode newnode = new DNode(element);
         if(head == null){
            head = newnode;
            size++;
         }else{
-            Dnode i = head;
+            DNode i = head;
             while(i.next != null) i = i.next;
             i.next = newnode;
             newnode.prev = i;
             size++;
         }
     }
-	
-	public Object get(int index) {
-		if(index >= size) return null;
-		Dnode pointer = head;
-		for(int i = 0; i < index; i++)
-			pointer = pointer.next;
-		return pointer.data;
-	}
 	
 	public void set(int index, Object element) {
 		if(index >= size) return;
