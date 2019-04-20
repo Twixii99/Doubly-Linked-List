@@ -1,4 +1,4 @@
-package eg.edu.alexu.csd.datastructure.linkedList;
+package let;
 
 public class LinkedList {
 	public Node head = null;
@@ -47,13 +47,35 @@ public class LinkedList {
         size++;
         }
     }
-	
+    
+    public void add(Object element,char poly) {
+        Node newnode = new Node(element);
+        newnode.name = poly;
+        if(head == null){
+            head = newnode;
+            size++;
+        }else{
+        Node i = head;
+        while(i.next != null) i = i.next;
+        i.next = newnode;
+        size++;
+        }
+    }
 	public Object get(int index) {
 		if(index >= size) return null;
 		Node pointer = head;
 		for(int i = 0; i < index; i++)
 			pointer = pointer.next;
 		return pointer.data;
+	}
+	
+	public Object get(char poly) {
+		Node pointer = head;
+		for(int i = 0; i < size; i++) {
+			if(pointer.name == poly) return pointer.data;
+			else pointer = pointer.next;
+		}
+		return null;
 	}
 	
 	public void set(int index, Object element) {
@@ -87,26 +109,47 @@ public class LinkedList {
 		size--;
 	}
 	
+	public void remove(char poly) {
+		Node pointer = head;
+		if(pointer.name == poly) {
+			head = head.next;
+			return;
+		}
+		Node i = null;
+		int counter = 0;
+		while(counter < size-2) {
+			if(pointer.next.name == poly) i = pointer;
+			counter++;
+			pointer = pointer.next;
+		}
+		i.next = i.next.next;
+		size--;
+		
+	}
+	
 	public int size() {
 		return size;
 	}
 	
-	public Node sublist(int fromIndex, int toIndex) {
-		if(fromIndex >= size & toIndex >= size) return null;
-		Node pointer = head;
-		int i;
-		for(i = 0; i < fromIndex; i++) 
-			pointer = pointer.next;
-		Node pointer2 = pointer;
-		for(int j = i; j < toIndex; j++)
-			pointer2 = pointer2.next;
-		pointer2.next = null;
-		return pointer;
-	}
+	public ILinkedList sublist(int fromindex , int toindex){
+        singlyLinkedList l1 = new singlyLinkedList();
+        for(int i=fromindex ; i<=toindex ; i++){
+            l1.add(this.get(i));
+        }
+        return l1;
+    	}
 	
 	public boolean contains(Object o) {
 		for(Node pointer = head; pointer != null; pointer = pointer.next){
 			if(pointer.data == o)
+				return true;
+		}
+		return false;
+	}
+	
+	public boolean contains(char poly) {
+		for(Node pointer = head; pointer != null; pointer = pointer.next){
+			if(pointer.name == poly)
 				return true;
 		}
 		return false;
