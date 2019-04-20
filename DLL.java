@@ -14,7 +14,7 @@ public class DlinkedList {
     }
      
    public void add(int index, Object element) {
-        if(index >= size || index < 0) return;
+        if(index > size || index < 0) return;
         DNode newnode = new DNode(element);
         if(head==null){
             head = newnode;
